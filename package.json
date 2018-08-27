@@ -1,0 +1,48 @@
+{
+  "name": "fooleap",
+  "version": "1.0.0",
+  "main": "/src/main.js",
+  "dependencies": {
+    "coordtransform": "^2.1.2",
+    "davidshimjs-qrcodejs": "0.0.2",
+    "disqus-php-api": "github:fooleap/disqus-php-api",
+    "flowchart.js": "^1.6.6",
+    "webpack-raphael": "^2.1.4",
+    "weixin-js-sdk": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.1.0",
+    "css-loader": "^0.28.1",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "path": "^0.12.7",
+    "postcss": "^6.0.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^7.0.1",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
+  },
+  "scripts": {
+    "jekyll": "webpack -p && jekyll s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fooleap/fooleap.github.io.git"
+  },
+  "author": "fooleap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fooleap/fooleap.github.io/issues"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "homepage": "https://github.com/fooleap/fooleap.github.io#readme",
+  "description": ""
+}
