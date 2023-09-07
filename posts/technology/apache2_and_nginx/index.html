@@ -1,0 +1,435 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>web容器的使用和反向代理 - DeemBear's Blog</title><meta name=author content="DeemBear"><meta name=author-link content="https://deembear.top"><meta name=description content="apache常见问题 配置apache2文件简单服务器 打开配置文件 1 sudo vim /etc/apache2/sites-available/000-default.conf 修改内容为 1 2 3 4 5 6 Alias /e6ecni3_Sivan &#34;/var/www/html/&#34; <Directory /var/www/html/&#34;> Require all granted AllowOverride All Options FollowSymLinks MultiViews </Directory> 删除/var/ww"><meta name=keywords content="反向代理,网站证书"><meta itemprop=name content="web容器的使用和反向代理"><meta itemprop=description content="apache常见问题 配置apache2文件简单服务器 打开配置文件 1 sudo vim /etc/apache2/sites-available/000-default.conf 修改内容为 1 2 3 4 5 6 Alias /e6ecni3_Sivan &#34;/var/www/html/&#34; <Directory /var/www/html/&#34;> Require all granted AllowOverride All Options FollowSymLinks MultiViews </Directory> 删除/var/ww"><meta itemprop=datePublished content="2022-05-03T10:47:44+00:00"><meta itemprop=dateModified content="2023-09-08T04:51:00+08:00"><meta itemprop=wordCount content="1605"><meta itemprop=image content="https://deembear.top/avatar.png"><meta itemprop=keywords content="反向代理,网站证书,"><meta property="og:title" content="web容器的使用和反向代理"><meta property="og:description" content="apache常见问题 配置apache2文件简单服务器 打开配置文件 1 sudo vim /etc/apache2/sites-available/000-default.conf 修改内容为 1 2 3 4 5 6 Alias /e6ecni3_Sivan &#34;/var/www/html/&#34; <Directory /var/www/html/&#34;> Require all granted AllowOverride All Options FollowSymLinks MultiViews </Directory> 删除/var/ww"><meta property="og:type" content="article"><meta property="og:url" content="https://deembear.top/posts/technology/apache2_and_nginx/"><meta property="og:image" content="https://deembear.top/avatar.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-03T10:47:44+00:00"><meta property="article:modified_time" content="2023-09-08T04:51:00+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://deembear.top/avatar.png"><meta name=twitter:title content="web容器的使用和反向代理"><meta name=twitter:description content="apache常见问题 配置apache2文件简单服务器 打开配置文件 1 sudo vim /etc/apache2/sites-available/000-default.conf 修改内容为 1 2 3 4 5 6 Alias /e6ecni3_Sivan &#34;/var/www/html/&#34; <Directory /var/www/html/&#34;> Require all granted AllowOverride All Options FollowSymLinks MultiViews </Directory> 删除/var/ww"><meta name=application-name content="DeemBear's blog"><meta name=apple-mobile-web-app-title content="DeemBear's blog"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://deembear.top/posts/technology/apache2_and_nginx/><link rel=prev href=https://deembear.top/posts/projects/vim/><link rel=next href=https://deembear.top/posts/technology/compile_and_install/><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"web容器的使用和反向代理","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/deembear.top\/posts\/technology\/apache2_and_nginx\/"},"image":["https:\/\/deembear.top\/apple-touch-icon.png"],"genre":"posts","keywords":"反向代理, 网站证书","wordcount":1605,"url":"https:\/\/deembear.top\/posts\/technology\/apache2_and_nginx\/","datePublished":"2022-05-03T10:47:44+00:00","dateModified":"2023-09-08T04:51:00+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"DeemBear","logo":"https:\/\/deembear.top\/avatar.png"},"author":{"@type":"Person","name":"DeemBear"},"description":""}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage?.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("data-theme","dark")</script><div class=wrapper data-page-style=custom><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="DeemBear's Blog"><img loading=lazy src=/avatar.png srcset="/avatar.png, /avatar.png 1.5x, /avatar.png 2x" sizes=auto data-title="DeemBear's Blog" data-alt="DeemBear's Blog" class=logo style="background:url(/svg/loading.min.svg)no-repeat 50%" onload='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e);this.dataset.lazyloaded=""' onerror='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e)'><span class=header-title-text>DeemBear's blog</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden=true></i> 所有文章</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> 关于</a></li><li class=menu-item><a class=menu-link href=https://a.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatBing</a></li><li class=menu-item><a class=menu-link href=https://b.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatTTS</a></li><li class=menu-item><a class=menu-link href=https://c.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatChat</a></li><li class=menu-item><a class=menu-link href=https://d.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> DeepGPT</a></li><li class=menu-item><a class=menu-link href=https://e.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> BetterChat</a></li><li class=menu-item><a class=menu-link href=https://f.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> FlowDeer</a></li><li class=menu-item><a class=menu-link href=https://code.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatCode</a></li><li class="menu-item delimiter"></li><li class="menu-item language"><span role=button aria-label title>简体中文<i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden=true></i></span><ul class=sub-menu><li class=menu-item></li></ul></li><li class="menu-item search" id=search-desktop><input type=text placeholder id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title><i class="fa-solid fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="DeemBear's Blog"><img loading=lazy src=/avatar.png srcset="/avatar.png, /avatar.png 1.5x, /avatar.png 2x" sizes=auto data-title=/avatar.png data-alt=/avatar.png class=logo style="background:url(/svg/loading.min.svg)no-repeat 50%" onload='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e);this.dataset.lazyloaded=""' onerror='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e)'><span class=header-title-text>DeemBear's blog</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title><i class="fa-solid fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile></a></li><li class=menu-item><a class=menu-link href=/posts/><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden=true></i> 所有文章</a></li><li class=menu-item><a class=menu-link href=/categories/><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden=true></i> 分类</a></li><li class=menu-item><a class=menu-link href=/tags/><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden=true></i> 标签</a></li><li class=menu-item><a class=menu-link href=/about/><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> 关于</a></li><li class=menu-item><a class=menu-link href=https://a.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatBing</a></li><li class=menu-item><a class=menu-link href=https://b.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatTTS</a></li><li class=menu-item><a class=menu-link href=https://c.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatChat</a></li><li class=menu-item><a class=menu-link href=https://d.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> DeepGPT</a></li><li class=menu-item><a class=menu-link href=https://e.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> BetterChat</a></li><li class=menu-item><a class=menu-link href=https://f.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> FlowDeer</a></li><li class=menu-item><a class=menu-link href=https://code.deembear.top rel="noopener noreferrer" target=_blank><i class="fa-solid fa-info-circle fa-fw fa-sm" aria-hidden=true></i> ChatCode</a></li><li class="menu-item theme-switch" title><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li><li class="menu-item language"><span role=button aria-label title>简体中文<i class="dropdown-icon fa-solid fa-chevron-down" aria-hidden=true></i></span>
+<select class=language-select onchange="location=this.value"><option disabled></option></select></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class=toc id=toc-auto><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class=toc-content id=toc-content-auto></div></aside><aside class=aside-custom></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>web容器的使用和反向代理</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://deembear.top title=作者 target=_blank rel="external nofollow noopener noreferrer author" class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+DeemBear</a></span>
+<span class=post-category>收录于 <a href=/categories/%E6%95%99%E7%A8%8B/><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> 教程</a></span></div><div class=post-meta-line><span title="发布于 2022-05-03 10:47:44"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden=true></i><time datetime=2022-05-03>2022-05-03</time></span>&nbsp;<span title="更新于 2023-09-08 04:51:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden=true></i><time datetime=2023-09-08>2023-09-08</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 1605 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 4 分钟</span>&nbsp;<span class=comment-visitors data-flag-title=web容器的使用和反向代理>
+<i class="fa-regular fa-eye fa-fw me-1" aria-hidden=true></i><span data-path=/posts/technology/apache2_and_nginx/ class=waline-pageview-count>-</span>&nbsp;次阅读
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><a href=#配置apache2文件简单服务器>配置apache2文件简单服务器</a></li><li><a href=#访问apache2服务器默认指向indexphp>访问apache2服务器默认指向index.php</a></li><li><a href=#在apache2中配置反向代理>在apache2中配置反向代理</a><ul><li><a href=#开启模块支持>开启模块支持</a></li><li><a href=#添加反向代理设置>添加反向代理设置</a></li><li><a href=#启动服务>启动服务</a></li></ul></li></ul></li><li><a href=#apache-添加ssl证书并反向代理>apache 添加ssl证书并反向代理</a></li><li><a href=#apache-配置websocket代理>apache 配置websocket代理</a></li><li><a href=#阿里云ssl证书安装错误>阿里云ssl证书安装错误</a></li></ul><ul><li><ul><li><a href=#配置nginx反向代理和重定向>配置nginx反向代理和重定向</a></li><li><a href=#配置wordpress支持>配置wordpress支持</a></li></ul></li></ul></nav></div></div><div class=content id=content><h1 id=apache常见问题>apache常见问题</h1><h3 id=配置apache2文件简单服务器>配置apache2文件简单服务器</h3><p>打开配置文件</p><div class=highlight id=id-1><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo vim /etc/apache2/sites-available/000-default.conf</span></span></code></pre></td></tr></table></div></div><p>修改内容为</p><div class=highlight id=id-2><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>  Alias /e6ecni3_Sivan <span class=s2>&#34;/var/www/html/&#34;</span>
+</span></span><span class=line><span class=cl>  &lt;Directory /var/www/html/<span class=s2>&#34;&gt;
+</span></span></span><span class=line><span class=cl><span class=s2>    Require all granted
+</span></span></span><span class=line><span class=cl><span class=s2>    AllowOverride All
+</span></span></span><span class=line><span class=cl><span class=s2>    Options FollowSymLinks MultiViews
+</span></span></span><span class=line><span class=cl><span class=s2>  &lt;/Directory&gt;</span></span></span></code></pre></td></tr></table></div></div><p>删除<code>/var/www/html</code></p><div class=highlight id=id-3><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo rm -rf /var/www/html
+</span></span><span class=line><span class=cl><span class=c1>#软链html为你的共享文件目录</span></span></span></code></pre></td></tr></table></div></div><h3 id=访问apache2服务器默认指向indexphp>访问apache2服务器默认指向index.php</h3><div class=highlight id=id-4><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>删除浏览器的访问记录就可以</span></span></code></pre></td></tr></table></div></div><h3 id=在apache2中配置反向代理>在apache2中配置反向代理</h3><p><strong>反向代理</strong>服务器位于用户与目标服务器之间，但是对于用户而言，反向代理服务器就相当于目标服务器，即用户直接访问反向代理服务器就可以获得目标服务器的资源。同时，用户不需要知道目标服务器的地址，也无须在用户端作任何设定。反向代理服务器通常可用来作为Web加速，即使用反向代理作为Web服务器的前置机来降低网络和服务器的负载，提高访问效率。
+其作用如下表示：
+<img loading=lazy src=https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png srcset="https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png, https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png 1.5x, https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png 2x" sizes=auto data-title=https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png data-alt=https://cdn.jsdelivr.net/gh/SivanLaai/image-store-rep@master/note/20220322171953.png style="background:url(/svg/loading.min.svg)no-repeat 50%" onload='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e);this.dataset.lazyloaded=""' onerror='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e)'></p><h4 id=开启模块支持>开启模块支持</h4><div class=highlight id=id-5><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo a2enmod rewrite
+</span></span><span class=line><span class=cl>sudo a2enmod lbmethod_byrequests
+</span></span><span class=line><span class=cl>sudo a2enmod proxy_balancer
+</span></span><span class=line><span class=cl>sudo a2enmod proxy_http
+</span></span><span class=line><span class=cl>sudo a2enmod proxy</span></span></code></pre></td></tr></table></div></div><h4 id=添加反向代理设置>添加反向代理设置</h4><div class=highlight id=id-6><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#sites-available/example.conf</span>
+</span></span><span class=line><span class=cl>LoadModule proxy_module modules/mod_proxy.so
+</span></span><span class=line><span class=cl>LoadModule proxy_http_module modules/mod_proxy_http.so
+</span></span><span class=line><span class=cl>&lt;VirtualHost *:80&gt;
+</span></span><span class=line><span class=cl>	<span class=c1># The ServerName directive sets the request scheme, hostname and port that</span>
+</span></span><span class=line><span class=cl>	<span class=c1># the server uses to identify itself. This is used when creating</span>
+</span></span><span class=line><span class=cl>	<span class=c1># redirection URLs. In the context of virtual hosts, the ServerName</span>
+</span></span><span class=line><span class=cl>	<span class=c1># specifies what hostname must appear in the request&#39;s Host: header to</span>
+</span></span><span class=line><span class=cl>	<span class=c1># match this virtual host. For the default virtual host (this file) this</span>
+</span></span><span class=line><span class=cl>	<span class=c1># value is not decisive as it is used as a last resort host regardless.</span>
+</span></span><span class=line><span class=cl>	<span class=c1># However, you must set it for any further virtual host explicitly.</span>
+</span></span><span class=line><span class=cl>	<span class=c1>#ServerName www.example.com</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	ServerAdmin sivan@localhost
+</span></span><span class=line><span class=cl>	<span class=c1># Para qbittorrent</span>
+</span></span><span class=line><span class=cl>	RewriteEngine on
+</span></span><span class=line><span class=cl>	RewriteRule             ^/torrent$      <span class=s2>&#34;/torrent/</span><span class=nv>$1</span><span class=s2>&#34;</span> <span class=o>[</span>R<span class=o>]</span>
+</span></span><span class=line><span class=cl>	ProxyPass               /torrent/       http://127.0.0.1:8080/
+</span></span><span class=line><span class=cl>	ProxyPassReverse        /torrent/       http://127.0.0.1:8080/
+</span></span><span class=line><span class=cl>	<span class=c1># Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</span>
+</span></span><span class=line><span class=cl>	<span class=c1># error, crit, alert, emerg.</span>
+</span></span><span class=line><span class=cl>	<span class=c1># It is also possible to configure the loglevel for particular</span>
+</span></span><span class=line><span class=cl>	<span class=c1># modules, e.g.</span>
+</span></span><span class=line><span class=cl>	<span class=c1>#LogLevel info ssl:warn</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	ErrorLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/error.log
+</span></span><span class=line><span class=cl>	CustomLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/access.log combined
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>	<span class=c1># For most configuration files from conf-available/, which are</span>
+</span></span><span class=line><span class=cl>	<span class=c1># enabled or disabled at a global level, it is possible to</span>
+</span></span><span class=line><span class=cl>	<span class=c1># include a line for only one particular virtual host. For example the</span>
+</span></span><span class=line><span class=cl>	<span class=c1># following line enables the CGI configuration for this host only</span>
+</span></span><span class=line><span class=cl>	<span class=c1># after it has been globally disabled with &#34;a2disconf&#34;.</span>
+</span></span><span class=line><span class=cl>	<span class=c1>#Include conf-available/serve-cgi-bin.conf</span>
+</span></span><span class=line><span class=cl>&lt;/VirtualHost&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># vim: syntax=apache ts=4 sw=4 sts=4 sr noet</span></span></span></code></pre></td></tr></table></div></div><h4 id=启动服务>启动服务</h4><div class=highlight id=id-7><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo a2ensite example.conf
+</span></span><span class=line><span class=cl>sudo service apache2 restart</span></span></code></pre></td></tr></table></div></div><h2 id=apache-添加ssl证书并反向代理>apache 添加ssl证书并反向代理</h2><ul><li>开启ssl模块</li></ul><div class=highlight id=id-8><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo a2enmod ssl</span></span></code></pre></td></tr></table></div></div><ul><li>配置证书<code>site.conf</code></li></ul><div class=highlight id=id-9><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>LoadModule proxy_module modules/mod_proxy.so                                  
+</span></span><span class=line><span class=cl>&lt;IfModule mod_ssl.c&gt;            
+</span></span><span class=line><span class=cl>        &lt;VirtualHost _default_:443&gt;
+</span></span><span class=line><span class=cl>                ServerAdmin webmaster@localhost                                                                
+</span></span><span class=line><span class=cl>                                                                                        
+</span></span><span class=line><span class=cl>                RewriteEngine on
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                ProxyPass               /       http://127.0.0.1:8360/
+</span></span><span class=line><span class=cl>                ProxyPassReverse        /       http://127.0.0.1:8360/
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                ErrorLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/error.log
+</span></span><span class=line><span class=cl>                CustomLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/access.log combined
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                SSLEngine on
+</span></span><span class=line><span class=cl>                SSLCertificateFile      /etc/apache2/ssl/cloud.laais.cn.pem
+</span></span><span class=line><span class=cl>                SSLCertificateKeyFile /etc/apache2/ssl/cloud.laais.cn.key
+</span></span><span class=line><span class=cl>                SSLCertificateChainFile /etc/apache2/ssl/cloud.laais.cn.crt
+</span></span><span class=line><span class=cl>				SSLCACertificatePath /etc/apache2/ssl
+</span></span><span class=line><span class=cl>                SSLCACertificateFile /etc/apache2/ssl.crt/root_bundle.crt                                        
+</span></span><span class=line><span class=cl>        &lt;/VirtualHost&gt;                                                          
+</span></span><span class=line><span class=cl>&lt;/IfModule&gt;  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># vim: syntax=apache ts=4 sw=4 sts=4 sr noet</span></span></span></code></pre></td></tr></table></div></div><h2 id=apache-配置websocket代理>apache 配置websocket代理</h2><div class=highlight id=id-10><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>LoadModule proxy_module modules/mod_proxy.so
+</span></span><span class=line><span class=cl>LoadModule proxy_http_module modules/mod_proxy_http.so
+</span></span><span class=line><span class=cl>&lt;VirtualHost *:80&gt;
+</span></span><span class=line><span class=cl>        ServerName www.hfsurrogacy.com
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        ServerAdmin webmaster@hfsurrogacy.com
+</span></span><span class=line><span class=cl>        DocumentRoot /var/www/html
+</span></span><span class=line><span class=cl>        &lt;Directory /var/www/html&gt;
+</span></span><span class=line><span class=cl>            AllowOverride All
+</span></span><span class=line><span class=cl>            Require all granted
+</span></span><span class=line><span class=cl>        &lt;/Directory&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        ErrorLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/error.log
+</span></span><span class=line><span class=cl>        CustomLog <span class=si>${</span><span class=nv>APACHE_LOG_DIR</span><span class=si>}</span>/access.log combined
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        &lt;LocationMatch <span class=s2>&#34;/web&#34;</span>&gt;
+</span></span><span class=line><span class=cl>            ProxyPass http://127.0.0.1:10086/web <span class=nv>upgrade</span><span class=o>=</span>WebSocket
+</span></span><span class=line><span class=cl>            ProxyAddHeaders Off
+</span></span><span class=line><span class=cl>            ProxyPreserveHost On
+</span></span><span class=line><span class=cl>            RequestHeader <span class=nb>set</span> Host %<span class=o>{</span>HTTP_HOST<span class=o>}</span>s
+</span></span><span class=line><span class=cl>            RequestHeader <span class=nb>set</span> X-Forwarded-For %<span class=o>{</span>REMOTE_ADDR<span class=o>}</span>s
+</span></span><span class=line><span class=cl>        &lt;/LocationMatch&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&lt;/VirtualHost&gt;</span></span></code></pre></td></tr></table></div></div><h2 id=阿里云ssl证书安装错误>阿里云ssl证书安装错误</h2><ul><li>根据阿里云的教程<a href="https://help.aliyun.com/document_detail/98727.html?spm=0.2020520163.help.dexternal.172bmN0amN0aZT" target=_blank rel="external nofollow noopener noreferrer">在Apache服务器上安装SSL证书 (aliyun.com)<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden=true></i></a>
+1.在服务器上更新证书apache2会报错
+（1）错误1：<code>AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globa</code>
+在<code>apache.conf</code>最后添加如下：</li></ul><div class=highlight id=id-11><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>...
+</span></span><span class=line><span class=cl># vim: syntax=apache ts=4 sw=4 sts=4 sr noet                                                                                                                                                   
+</span></span><span class=line><span class=cl>ServerName 127.0.0.1 </span></span></code></pre></td></tr></table></div></div><p>（2）错误2：<code>Action 'start' failed.</code>
+看日志提示<code>SSL Library Error: error:0A0000B1:SSL routines::no certificate assigned</code></p><ul><li>解决方案
+下载这两处的文件然后把其他文件里面的pem文件更新到<code>site.conf</code>中
+<img loading=lazy src=https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png srcset="https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png, https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png 1.5x, https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png 2x" sizes=auto data-title=https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png data-alt=https://cdn.staticaly.com/gh/SivanLaai/image-store-rep@master/note/20221212231557.png style="background:url(/svg/loading.min.svg)no-repeat 50%" onload='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e);this.dataset.lazyloaded=""' onerror='this.title=this.dataset.title,this.alt=this.dataset.alt;for(const e of["style","data-title","data-alt","onerror","onload"])this.removeAttribute(e)'></li></ul><h1 id=nginx常见问题>Nginx常见问题</h1><h3 id=配置nginx反向代理和重定向>配置nginx反向代理和重定向</h3><ul><li>打开配置文件</li></ul><div class=highlight id=id-12><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo vim /etc/nginx/conf.d/jellyfin.conf</span></span></code></pre></td></tr></table></div></div><ul><li>添加如下内容（访问http://host/video/<em>.html 可反向代理重定向到http://host:8096/</em>.html）：</li></ul><div class=highlight id=id-13><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>	<span class=nb>set</span> <span class=nv>$jellyfin</span> 127.0.0.1<span class=p>;</span>
+</span></span><span class=line><span class=cl>    location /video <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Proxy main Jellyfin traffic</span>
+</span></span><span class=line><span class=cl>	rewrite ^/video/<span class=o>(</span>.*<span class=o>)</span>$ /<span class=nv>$1</span> break<span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_pass http://<span class=nv>$jellyfin</span>:8096<span class=p>;</span> 
+</span></span><span class=line><span class=cl>        proxy_set_header Host <span class=nv>$host</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Real-IP <span class=nv>$remote_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-For <span class=nv>$proxy_add_x_forwarded_for</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Proto <span class=nv>$scheme</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Protocol <span class=nv>$scheme</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Host <span class=nv>$http_host</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Disable buffering when the nginx proxy gets very resource heavy upon streaming</span>
+</span></span><span class=line><span class=cl>        proxy_buffering off<span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># location block for /web - This is purely for aesthetics so /web/#!/ works instead of having to go to /web/index.html/#!/</span>
+</span></span><span class=line><span class=cl>    <span class=nv>location</span> <span class=o>=</span> /video/web/ <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Proxy main Jellyfin traffic</span>
+</span></span><span class=line><span class=cl>        proxy_pass http://<span class=nv>$jellyfin</span>:8096/web/index.html<span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header Host <span class=nv>$host</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Real-IP <span class=nv>$remote_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-For <span class=nv>$proxy_add_x_forwarded_for</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Proto <span class=nv>$scheme</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Protocol <span class=nv>$scheme</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        proxy_set_header X-Forwarded-Host <span class=nv>$http_host</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=配置wordpress支持>配置wordpress支持</h3><ul><li>打开配置文件</li></ul><div class=highlight id=id-14><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo vim /etc/nginx/sites-available/default</span></span></code></pre></td></tr></table></div></div><ul><li>添加如下内容（支持.htaccess和php）：</li></ul><div class=highlight id=id-15><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>server <span class=o>{</span>
+</span></span><span class=line><span class=cl>        listen <span class=m>80</span> default_server<span class=p>;</span>
+</span></span><span class=line><span class=cl>        listen <span class=o>[</span>::<span class=o>]</span>:80 default_server<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># SSL configuration</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        <span class=c1># listen 443 ssl default_server;</span>
+</span></span><span class=line><span class=cl>        <span class=c1># listen [::]:443 ssl default_server;</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Note: You should disable gzip for SSL traffic.</span>
+</span></span><span class=line><span class=cl>        <span class=c1># See: https://bugs.debian.org/773332</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Read up on ssl_ciphers to ensure a secure configuration.</span>
+</span></span><span class=line><span class=cl>        <span class=c1># See: https://bugs.debian.org/765782</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Self signed certs generated by the ssl-cert package</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Don&#39;t use them in a production server!</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        <span class=c1># include snippets/snakeoil.conf;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        root /var/www/html<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Add index.php to the list if you are using PHP</span>
+</span></span><span class=line><span class=cl>        index index.php index.html index.htm index.nginx-debian.html<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        server_name _<span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        location / <span class=o>{</span>
+</span></span><span class=line><span class=cl>                <span class=c1># First attempt to serve request as file, then</span>
+</span></span><span class=line><span class=cl>                <span class=c1># as directory, then fall back to displaying a 404.</span>
+</span></span><span class=line><span class=cl>                try_files <span class=nv>$uri</span> <span class=nv>$uri</span>/ <span class=o>=</span>404<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=c1># support .htaccess</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span>-f <span class=nv>$request_filename</span>/index.html<span class=o>){</span>
+</span></span><span class=line><span class=cl>                        rewrite <span class=o>(</span>.*<span class=o>)</span> <span class=nv>$1</span>/index.html break<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span>-f <span class=nv>$request_filename</span>/index.php<span class=o>){</span>
+</span></span><span class=line><span class=cl>                        rewrite <span class=o>(</span>.*<span class=o>)</span> <span class=nv>$1</span>/index.php<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span>!-f <span class=nv>$request_filename</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>                        rewrite <span class=o>(</span>.*<span class=o>)</span> /index.php<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>		
+</span></span><span class=line><span class=cl>        location /login <span class=o>{</span>
+</span></span><span class=line><span class=cl>                proxy_redirect off<span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_http_version 1.1<span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_set_header Upgrade <span class=nv>$http_upgrade</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_set_header Connection <span class=s2>&#34;upgrade&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_set_header Host <span class=nv>$http_host</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_set_header X-Real-IP <span class=nv>$remote_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                proxy_set_header X-Forwarded-For <span class=nv>$proxy_add_x_forwarded_for</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=nb>set</span> <span class=nv>$is_v2ray</span> 0<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=nv>$http_upgrade</span> <span class=o>=</span> <span class=s2>&#34;websocket&#34;</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nb>set</span> <span class=nv>$is_v2ray</span> 1<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=nv>$is_v2ray</span> <span class=o>=</span> 1<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=c1># 仅当请求为 WebSocket 时才反代到 V2Ray</span>
+</span></span><span class=line><span class=cl>                    proxy_pass http://127.0.0.1:10086<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=nv>$is_v2ray</span> <span class=o>=</span> 0<span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=c1># 否则显示正常网页</span>
+</span></span><span class=line><span class=cl>                    rewrite ^/<span class=o>(</span>.*<span class=o>)</span>$ /mask-page last<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># pass PHP scripts to FastCGI server</span>
+</span></span><span class=line><span class=cl>        <span class=c1>#</span>
+</span></span><span class=line><span class=cl>        location ~ <span class=se>\.</span>php$ <span class=o>{</span>
+</span></span><span class=line><span class=cl>                include snippets/fastcgi-php.conf<span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=c1># With php-fpm (or other unix sockets):</span>
+</span></span><span class=line><span class=cl>                fastcgi_pass unix:/run/php/php7.4-fpm.sock<span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>}</span></span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2023-09-08 04:51:00">更新于 2023-09-08&nbsp;<a class=git-hash href=https://github.com/deeme/deeme.github.io/commit/acb365e62da2ddb443faf4b5d63009144c361960 rel="external nofollow noopener noreferrer" target=_blank title="commit by deeme(github.io@gmail.com) acb365e62da2ddb443faf4b5d63009144c361960: 更改提示"><i class="fa-solid fa-hashtag fa-fw" aria-hidden=true></i>acb365e</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a href=/posts/technology/apache2_and_nginx/index.md title=阅读原始文档 class=link-to-markdown>阅读原始文档</a></span><span><a href=https://github.com/deeme/deeme.github.io/edit/master/content/posts/technology/apache2_and_nginx.md title=编辑此页 target=_blank rel="external nofollow noopener noreferrer" class=link-to-edit>编辑此页</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://deembear.top/posts/technology/apache2_and_nginx/ data-title=web容器的使用和反向代理 data-hashtags=反向代理,网站证书><i class="fa-brands fa-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://deembear.top/posts/technology/apache2_and_nginx/ data-hashtag=反向代理><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://deembear.top/posts/technology/apache2_and_nginx/ data-title=web容器的使用和反向代理><i class="fa-brands fa-hacker-news fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://deembear.top/posts/technology/apache2_and_nginx/ data-title=web容器的使用和反向代理><i data-svg-src=/lib/simple-icons/icons/line.min.svg aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://deembear.top/posts/technology/apache2_and_nginx/ data-title=web容器的使用和反向代理><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/ class=post-tag>反向代理</a><a href=/tags/%E7%BD%91%E7%AB%99%E8%AF%81%E4%B9%A6/ class=post-tag>网站证书</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/projects/vim/ class=post-nav-item rel=prev title="Vim/Neovim-Tmux 一键安装轻量级工作站"><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>Vim/Neovim-Tmux 一键安装轻量级工作站</a>
+<a href=/posts/technology/compile_and_install/ class=post-nav-item rel=next title=软件编译和安装>软件编译和安装<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=waline class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://waline.js.org/ rel="external nofollow noopener noreferrer">Waline</a>.</noscript></div></article></main></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class=variant-numeric>0%</span></div><div class="fixed-button view-comments d-none" role=button aria-label=查看评论><i class="fa-solid fa-comment fa-fw" aria-hidden=true></i></div></div><div id=mask></div><div class=reading-progress-bar style=left:0;top:0;--bg-progress:#000;--bg-progress-dark:#fff></div><noscript><div class=noscript-warning>FixIt 主题在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=stylesheet href=/lib/waline/waline.css><link rel=stylesheet href=/lib/katex/katex.min.css><script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script src=/lib/object-fit-images/ofi.min.js></script><script src=/lib/waline/waline.js defer></script><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/fuse/fuse.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/pangu/pangu.min.js defer></script><script>window.config={autoBookmark:!0,code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:10},comment:{enable:!0,expired:!1,waline:{copyright:!0,dark:"body[data-theme='dark']",el:"#waline",emoji:["//unpkg.com/@waline/emojis@1.1.0/weibo"],highlighter:!1,imageUploader:!1,lang:"zh-cn",login:"enable",meta:["nick","mail","link"],pageSize:10,pageview:!0,search:!1,serverURL:"",texRenderer:!1}},enablePWA:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},pangu:{enable:!0,selector:""},search:{distance:100,findAllMatches:!1,fuseIndexURL:"/index.json",highlightTag:"em",ignoreFieldNorm:!1,ignoreLocation:!1,isCaseSensitive:!1,location:0,maxResultLength:10,minMatchCharLength:2,noResultsFound:"没有找到结果",snippetLength:30,threshold:.3,type:"fuse",useExtendedSearch:!1}}</script><script src=/js/theme.min.js defer></script></body></html>
