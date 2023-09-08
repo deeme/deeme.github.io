@@ -1,11 +1,13 @@
 ---
-title: Softmax 梯度下降优化
+title: your_title
 categories:
   - 笔记
 tags:
   - Softmax
-date: 2018-04-20 13:21:00
+date: 2023-09-08T12:12:06+08:00
+draft: true
 ---
+
 ## softmax函数简介：
 &emsp;&emsp; softmax函数是用来处理多分类的一种软性分类器，它输出的是每个类别的概率值。数据集特征矩阵为X其维度为D+1 x N（其中D+1为原本样本的特征维度数D加上bias的维度后的维度数，所以为D+1，N为样本数），标注矩阵为Y，维度为C x N(其中C为类别数，N为样本数)。
 ![image](/images/1524209707955.png)
