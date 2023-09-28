@@ -1091,10 +1091,17 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       #   weight = 6
       #   [languages.zh-cn.menu.main.params]
       #     icon = "fa-solid fa-users"
+      #[[languages.zh-cn.menu.main]]
+        #identifier = "about"
+        #name = "关于"
+        #url = "about/"
+        #weight = 7
+        #[languages.zh-cn.menu.main.params]
+          #icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "about"
-        name = "关于"
-        url = "about/"
+        identifier = "AIShort"
+        name = "AIShort"
+        url = "https://s.deembear.top"
         weight = 7
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
@@ -1120,9 +1127,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "DeepGPT"
-        name = "DeepGPT"
-        url = "https://d.deembear.top"
+        identifier = "LobeChat"
+        name = "LobeChat"
+        url = "https://l.deembear.top"
         weight = 11
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
