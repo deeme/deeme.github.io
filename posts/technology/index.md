@@ -168,5 +168,5 @@ cp -rf gvim/colors vimfile
 ---
 
 > 作者: [DeemBear](https://deembear.top)  
-> URL: https://deembear.top/posts/projects/vim/  
+> URL: https://deembear.top/posts/technology/  
 
