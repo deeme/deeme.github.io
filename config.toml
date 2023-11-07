@@ -1099,52 +1099,66 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         #[languages.zh-cn.menu.main.params]
           #icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "AIShort"
-        name = "AIShort"
+        identifier = "指令"
+        name = "指令"
         url = "https://s.deembear.top"
         weight = 7
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "ChatVRM"
-        name = "ChatVRM"
-        url = "https://ai.deembear.top"
+        identifier = "学术GPT"
+        name = "学术GPT"
+        url = "https://a.deembear.top"
         weight = 8
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "ChatTTS"
-        name = "ChatTTS"
+        identifier = "TTSChat"
+        name = "TTSChat"
         url = "https://b.deembear.top"
         weight = 9
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
-        identifier = "academic"
-        name = "academic"
-        url = "https://d.deembear.top"
+        identifier = "ChatGPT"
+        name = "ChatGPT"
+        url = "https://c.deembear.top"
         weight = 10
+        [languages.zh-cn.menu.main.params]
+          icon = "fa-solid fa-info-circle"
+      [[languages.zh-cn.menu.main]]
+        identifier = "LobeChat"
+        name = "LobeChat"
+        url = "https://d.deembear.top"
+        weight = 11
+        [languages.zh-cn.menu.main.params]
+          icon = "fa-solid fa-info-circle"
+      [[languages.zh-cn.menu.main]]
+        identifier = "NextChat"
+        name = "NextChat"
+        url = "https://e.deembear.top"
+        weight = 12
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
         identifier = "FlowDeer"
         name = "FlowDeer"
         url = "https://f.deembear.top"
-        weight = 11
+        weight = 13
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
         identifier = "GPTIMG"
         name = "GPTIMG"
         url = "https://img.deembear.top"
-        weight = 12
+        weight = 14
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
         identifier = "ChatCode"
         name = "ChatCode"
         url = "https://code.deembear.top"
-        weight = 13
+        weight = 15
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       #[[languages.zh-cn.menu.main]]
