@@ -15,6 +15,7 @@ https://deembear.top/posts/technology/apt/
 https://deembear.top/posts/technology/python/
 https://deembear.top/posts/technology/system/
 https://deembear.top/posts/technology/ufw_config/
+https://deembear.top/chatgpt/
 https://deembear.top/about/
 https://deembear.top/posts/technology/lattern/
 https://deembear.top/posts/technology/%E7%A4%BA%E4%BE%8B/
