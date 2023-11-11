@@ -1101,7 +1101,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       [[languages.zh-cn.menu.main]]
         identifier = "指令"
         name = "指令"
-        url = "https://s.deembear.top"
+        url = "chatgpt/"
         weight = 7
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
