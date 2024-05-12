@@ -1,4 +1,4 @@
-# wordpress安装和问题
+# Wordpress安装和问题
 
 ## wordpress permainlink 不生效
 - 1.打开apache2默认配置文件
@@ -9,11 +9,11 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 ```bash
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
-<VirtualHost *:80>
+&lt;VirtualHost *:80&gt;
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
         # redirection URLs. In the context of virtual hosts, the ServerName
-        # specifies what hostname must appear in the request's Host: header to
+        # specifies what hostname must appear in the request&#39;s Host: header to
         # match this virtual host. For the default virtual host (this file) this
         # value is not decisive as it is used as a last resort host regardless.
         # However, you must set it for any further virtual host explicitly.
@@ -21,10 +21,10 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
  
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html
-        <Directory /var/www/html>
+        &lt;Directory /var/www/html&gt;
             AllowOverride All
             Require all granted
-        </Directory>
+        &lt;/Directory&gt;
  
         # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
         # error, crit, alert, emerg.
@@ -39,15 +39,15 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
         # enabled or disabled at a global level, it is possible to
         # include a line for only one particular virtual host. For example the
         # following line enables the CGI configuration for this host only
-        # after it has been globally disabled with "a2disconf".
+        # after it has been globally disabled with &#34;a2disconf&#34;.
         #Include conf-available/serve-cgi-bin.conf
-</VirtualHost>                                        
+&lt;/VirtualHost&gt;                                        
 ```
-- 3.在```/wp-admin/options-permalink.php```页面选择->Permalink structure -> Post name保存生成.hatcess
+- 3.在```/wp-admin/options-permalink.php```页面选择-&gt;Permalink structure -&gt; Post name保存生成.hatcess
 
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/wordpress/  
 

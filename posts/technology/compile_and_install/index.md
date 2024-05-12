@@ -16,8 +16,8 @@ git clone https://github.com/arvidn/libtorrent.git
 cd libtorrent
 git checkout origin/RC_1_2
 ./autotool.sh
-./configure CXXFLAGS=-std=c++14
-make clean && make -j$(nproc)
+./configure CXXFLAGS=-std=c&#43;&#43;14
+make clean &amp;&amp; make -j$(nproc)
 make install
 ```
 * 安装qbittorrent
@@ -27,7 +27,7 @@ wget https://github.com/qbittorrent/qBittorrent/archive/release-4.2.5
 tar zxvf release-4.1.3.tar.gz
 cd qBittorrent-release-4.1.3/
 ./configure --disable-gui
-make clean && make -j$(nproc)
+make clean &amp;&amp; make -j$(nproc)
 make install
 ```
 ## LAMP php7.4安装
@@ -63,7 +63,7 @@ apt-get update
 ```
 - 安装LAMP环境
 ```bash
-sudo apt update && sudo apt upgrade
+sudo apt update &amp;&amp; sudo apt upgrade
 sudo apt install mariadb-server  php-gd php-mysql php-fpm \
 php-curl php-mbstring php-intl php-gmp php-bcmath php-xml php-imagick php-zip
 ```
@@ -85,7 +85,7 @@ sudo apt-get install neovim
 ##### 编译安装
 - 安装编译依赖
 ```bash
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g&#43;&#43; pkg-config unzip curl doxygen
 ```
 
 - 获取源代码
@@ -133,7 +133,7 @@ mkdir transmission
 - 创建文件```docker-compose.yml```
 ```yaml
 ---
-version: "2.1"
+version: &#34;2.1&#34;
 services:
   transmission:
     image: lscr.io/linuxserver/transmission
@@ -174,8 +174,8 @@ sudo apt update install transmission-daemon
 - 修改配置文件
 ``` # /etc/transmission-daemon/settings.json
     ...
-    "rpc-whitelist": "*",
-    "rpc-whitelist-enabled": true,
+    &#34;rpc-whitelist&#34;: &#34;*&#34;,
+    &#34;rpc-whitelist-enabled&#34;: true,
     ...
 ```
 
@@ -211,7 +211,7 @@ sudo docker-compose up -d
 https://repo.jellyfin.org/releases/server/ubuntu/versions
 - 查看当前的GPU设备
 ```
-lspci -k | grep -A 2 -i "VGA"
+lspci -k | grep -A 2 -i &#34;VGA&#34;
 ```
 - 禁用nouveau
 ```
@@ -256,19 +256,19 @@ mkdir jellyfin
 - 创建文件```docker-compose.yml```
 ```yaml
 ---
-version: "3.5"
+version: &#34;3.5&#34;
 services:
   jellyfin:
     image: nyanmisaka/jellyfin:latest
     container_name: jellyfin
     user: 1000:1000
-    network_mode: "host"
+    network_mode: &#34;host&#34;
     volumes:
       - ./config:/config
       - ./cache:/cache
       - ./media:/media
       - /path/to/media2:/media2:ro
-    restart: "unless-stopped"
+    restart: &#34;unless-stopped&#34;
 
 
 ```
@@ -305,6 +305,6 @@ sudo apt install nvidia-driver-470-server
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/compile_and_install/  
 

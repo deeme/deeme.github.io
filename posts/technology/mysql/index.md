@@ -23,7 +23,7 @@ sudo service mysql restart
 ```
 mysql -u root
 use mysql;
-update user set password=password("test@123") where user="root";
+update user set password=password(&#34;test@123&#34;) where user=&#34;root&#34;;
 ```
 
 ### mysql root帐号不能登录
@@ -35,7 +35,7 @@ update user set password=password("test@123") where user="root";
 
 ```
 flush privileges;
-alter user 'root'@'localhost' identified by 'test@123';
+alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;test@123&#39;;
 flush privileges;
 commit;
 ```
@@ -57,14 +57,14 @@ bind-address=0.0.0.0
 ```
 - 具体命令
 ```
-CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+CREATE USER &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
 # 所有的数据库都可以在外网访问
-GRANT ALL PRIVILEGES ON *.* TO 'username'@'%';
+GRANT ALL PRIVILEGES ON *.* TO &#39;username&#39;@&#39;%&#39;;
 FLUSH PRIVILEGES;
 ```
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/mysql/  
 

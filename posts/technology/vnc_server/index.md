@@ -29,10 +29,10 @@ vim ~/.vnc/xstartup
 ```bash
 #!/bin/sh
 # Start Gnome 3 Desktop
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-vncconfig -iconic &
-dbus-launch --exit-with-session gnome-session &
+[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources
+vncconfig -iconic &amp;
+dbus-launch --exit-with-session gnome-session &amp;
 ```
 
 ### Step6:重启TigerVNC
@@ -44,6 +44,6 @@ vncserver -depth 24 -name mydesktop -localhost no :1
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/vnc_server/  
 

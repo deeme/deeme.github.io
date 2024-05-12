@@ -1,13 +1,13 @@
-# nextcloud配置
+# Nextcloud配置
 
 ## nextcloud网盘相关问题
 ### 网盘配置
 #### （1）配置环境
-- Linux + Apache2 + Mysql + Php(LAMP)
+- Linux &#43; Apache2 &#43; Mysql &#43; Php(LAMP)
 [Example installation on Ubuntu 20.04 LTS — Nextcloud latest Administration Manual latest documentation](https://docs.nextcloud.com/server/latest/admin_manual/installation/example_ubuntu.html)
--  配置Linux + Nginx + Mysql + Php(LNMP)环境
+-  配置Linux &#43; Nginx &#43; Mysql &#43; Php(LNMP)环境
 ```bash
-sudo apt update && sudo apt upgrade
+sudo apt update &amp;&amp; sudo apt upgrade
 sudo apt install mariadb-server nginx php-gd php-mysql php-fpm \
 php-curl php-mbstring php-intl php-gmp php-bcmath php-xml php-imagick php-zip
 ```
@@ -29,7 +29,7 @@ http {
 ```bash
 # /etc/nginx/conf.d/nextcloud.conf
 ##
-# You should look at the following URL's in order to grasp a solid understanding
+# You should look at the following URL&#39;s in order to grasp a solid understanding
 # of Nginx configuration files in order to fully unleash the power of Nginx.
 # https://www.nginx.com/resources/wiki/start/
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
@@ -67,20 +67,20 @@ server {
     gzip_comp_level 4;
     gzip_min_length 256;
     gzip_proxied expired no-cache no-store private no_last_modified no_etag auth;
-    gzip_types application/atom+xml application/javascript application/json application/ld+json application/manifest+json application/rss+xml application/vnd.geo+json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest+json application/xhtml+xml application/xml font/opentype image/bmp image/svg+xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+    gzip_types application/atom&#43;xml application/javascript application/json application/ld&#43;json application/manifest&#43;json application/rss&#43;xml application/vnd.geo&#43;json application/vnd.ms-fontobject application/wasm application/x-font-ttf application/x-web-app-manifest&#43;json application/xhtml&#43;xml application/xml font/opentype image/bmp image/svg&#43;xml image/x-icon text/cache-manifest text/css text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
 
     # Pagespeed is not supported by Nextcloud, so if your server is built
     # with the `ngx_pagespeed` module, uncomment this line to disable it.
     #pagespeed off;
 
     # HTTP response headers borrowed from Nextcloud `.htaccess`
-    add_header Referrer-Policy                      "no-referrer"   always;
-    add_header X-Content-Type-Options               "nosniff"       always;
-    add_header X-Download-Options                   "noopen"        always;
-    add_header X-Frame-Options                      "SAMEORIGIN"    always;
-    add_header X-Permitted-Cross-Domain-Policies    "none"          always;
-    add_header X-Robots-Tag                         "none"          always;
-    add_header X-XSS-Protection                     "1; mode=block" always;
+    add_header Referrer-Policy                      &#34;no-referrer&#34;   always;
+    add_header X-Content-Type-Options               &#34;nosniff&#34;       always;
+    add_header X-Download-Options                   &#34;noopen&#34;        always;
+    add_header X-Frame-Options                      &#34;SAMEORIGIN&#34;    always;
+    add_header X-Permitted-Cross-Domain-Policies    &#34;none&#34;          always;
+    add_header X-Robots-Tag                         &#34;none&#34;          always;
+    add_header X-XSS-Protection                     &#34;1; mode=block&#34; always;
 
     # Remove X-Powered-By, which is an information leak
     fastcgi_hide_header X-Powered-By;
@@ -89,8 +89,8 @@ server {
     # here as the fallback means that Nginx always exhibits the desired behaviour
     # when a client requests a path that corresponds to a directory that exists
     # on the server. In particular, if that directory contains an index.php file,
-    # that file is correctly served; if it doesn't, then the request is passed to
-    # the front-end controller. This consistent behaviour means that we don't need
+    # that file is correctly served; if it doesn&#39;t, then the request is passed to
+    # the front-end controller. This consistent behaviour means that we don&#39;t need
     # to specify custom rules for certain paths (e.g. images and other assets,
     # `/updater`, `/ocm-provider`, `/ocs-provider`), and thus
     # `try_files $uri $uri/ /index.php$request_uri`
@@ -117,9 +117,9 @@ server {
     # to the URI, resulting in a HTTP 500 error response.
     location ~ \.php(?:$|/) {
         # Required for legacy support
-        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|oc[ms]-provider\/.+|.+\/richdocumentscode\/proxy) /index.php$request_uri;
+        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.&#43;|oc[ms]-provider\/.&#43;|.&#43;\/richdocumentscode\/proxy) /index.php$request_uri;
 
-        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        fastcgi_split_path_info ^(.&#43;?\.php)(/.*)$;
         set $path_info $fastcgi_path_info;
 
         try_files $fastcgi_script_name =404;
@@ -191,7 +191,7 @@ config.php
 
 ```bash
 .
-'check_data_directory_permissions' => false,
+&#39;check_data_directory_permissions&#39; =&gt; false,
 ...
 ```
 
@@ -201,7 +201,7 @@ config.php
 
 ```bash
 sudo apt install aria2
-cd /etc/ && mkdir aria2 && cd aria2 && touch aria2c.conf && touch aria2.session
+cd /etc/ &amp;&amp; mkdir aria2 &amp;&amp; cd aria2 &amp;&amp; touch aria2c.conf &amp;&amp; touch aria2.session
 ```
 
 - #### 创建配置文件
@@ -218,7 +218,7 @@ disk-cache=32M
 continue=true
 
 # 文件预分配方式, 能有效降低磁盘碎片, 默认:prealloc
-# 预分配所需时间: none < falloc ? trunc < prealloc
+# 预分配所需时间: none &lt; falloc ? trunc &lt; prealloc
 # falloc和trunc则需要文件系统和内核支持
 # NTFS建议使用falloc, EXT3/4建议trunc, MAC 下需要注释此项
 file-allocation=trunc
@@ -301,7 +301,7 @@ on-download-complete=/home/filesscan.sh
 - #### 启动aria2
 
 ```bash
-nohup aria2c --conf-path=/etc/aria2/aria2.conf > /home/linux/aria2.log 2>&1 &
+nohup aria2c --conf-path=/etc/aria2/aria2.conf &gt; /home/linux/aria2.log 2&gt;&amp;1 &amp;
 ```
 
 
@@ -311,14 +311,14 @@ nohup aria2c --conf-path=/etc/aria2/aria2.conf > /home/linux/aria2.log 2>&1 &
 # startaria.sh
 while(true)
 do
-sudo kill -9 $(ps -ef|grep aria2|gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
-list=`wget -qO- https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt|awk NF|sed ":a;N;s/\n/,/g;ta"`
+sudo kill -9 $(ps -ef|grep aria2|gawk &#39;$0 !~/grep/ {print $2}&#39; |tr -s &#39;\n&#39; &#39; &#39;)
+list=`wget -qO- https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt|awk NF|sed &#34;:a;N;s/\n/,/g;ta&#34;`
 echo $list
-if [ -z "`grep "bt-tracker" /etc/aria2/aria2.conf`" ]; then
-   sudo sed -i '$a bt-tracker='${list}  /etc/aria2/aria2.conf
+if [ -z &#34;`grep &#34;bt-tracker&#34; /etc/aria2/aria2.conf`&#34; ]; then
+   sudo sed -i &#39;$a bt-tracker=&#39;${list}  /etc/aria2/aria2.conf
    echo add......
 else
-    sudo sed -i "s@bt-tracker.*@bt-tracker=$list@g" /etc/aria2/aria2.conf
+    sudo sed -i &#34;s@bt-tracker.*@bt-tracker=$list@g&#34; /etc/aria2/aria2.conf
     echo update......
 fi
 sudo aria2c --conf-path=/etc/aria2/aria2.conf
@@ -334,7 +334,7 @@ sudo service apache2 stop
 sudo service apache2 start
 sudo /etc/init.d/mysql start
 # 运行aria2脚本更新bt trackers
-sudo nohup bash startaria.sh > /home/linux/log/aria2.log 2>&1 &
+sudo nohup bash startaria.sh &gt; /home/linux/log/aria2.log 2&gt;&amp;1 &amp;
 # 监控文件变化
 while(true)
 do
@@ -345,10 +345,10 @@ done
 ```bash
 # runserver.sh
 # 删除aria相关的程序
-sudo kill -9 $(ps -ef|grep startserver|gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
-sudo kill -9 $(ps -ef|grep startaria|gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
-sudo kill -9 $(ps -ef|grep aria2|gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
-sudo nohup bash startserver.sh > /home/linux/log/nextcloud.log 2>&1 &
+sudo kill -9 $(ps -ef|grep startserver|gawk &#39;$0 !~/grep/ {print $2}&#39; |tr -s &#39;\n&#39; &#39; &#39;)
+sudo kill -9 $(ps -ef|grep startaria|gawk &#39;$0 !~/grep/ {print $2}&#39; |tr -s &#39;\n&#39; &#39; &#39;)
+sudo kill -9 $(ps -ef|grep aria2|gawk &#39;$0 !~/grep/ {print $2}&#39; |tr -s &#39;\n&#39; &#39; &#39;)
+sudo nohup bash startserver.sh &gt; /home/linux/log/nextcloud.log 2&gt;&amp;1 &amp;
 ```
 
 - #### 配置aria2NG
@@ -366,17 +366,17 @@ unzip AriaNg-1.2.3.zip
 # 创建/etc/apache2/sites-available/ariang.conf
 ```
 ```html
-Alias /ariang "/var/www/ariang/"
+Alias /ariang &#34;/var/www/ariang/&#34;
 
-<Directory /var/www/ariang/">
+&lt;Directory /var/www/ariang/&#34;&gt;
   Require all granted
   AllowOverride All
   Options FollowSymLinks MultiViews
 
-  <IfModule mod_dav.c>
+  &lt;IfModule mod_dav.c&gt;
     Dav off
-  </IfModule>
-</Directory>
+  &lt;/IfModule&gt;
+&lt;/Directory&gt;
 ```
 
 ```bash
@@ -393,7 +393,7 @@ mkdir nextcloud
 - 创建文件```docker-compose.yml```
 ```yaml
 ---
-version: '2'
+version: &#39;2&#39;
 
 volumes:
   nextcloud:
@@ -450,6 +450,6 @@ apt-get install apache2
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/nextcloud/  
 

@@ -3,14 +3,14 @@
 
 ---
 # 快速开始
-现在已经把整套流程打通了，直接参考下面的步骤，可以实现Obsidian写博客+自动发布和部署。
+现在已经把整套流程打通了，直接参考下面的步骤，可以实现Obsidian写博客&#43;自动发布和部署。
 - 下载([Obsidian](https://obsidian.md/))并安装
 - 下载安装[Git-Bash](https://www.git-scm.com/downloads)
 -  配置[Git - 生成 SSH 公钥 (git-scm.com)](https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)
 - 创建github新项目为：你的用户名.github.io，如```deeme.github.io```，其中deeme为我的用户名
 - (可选) - 添加Github项目环境变量```WEB_SITE```为你自己的域名如```www.deembear.top
 - 利用obsidian打开blog文件夹，开始写博客
-- 快捷键 ```Crtl + U```快速发布文章（利用Obsidian Shell Command插件实现快速发布）
+- 快捷键 ```Crtl &#43; U```快速发布文章（利用Obsidian Shell Command插件实现快速发布）
 - 打开你的网址，如```deeme.github.io```
 # 其他玩法
 ## 评论功能（可选）
@@ -21,7 +21,7 @@
 对于Waline的详细使用请看[官方教程](https://waline.js.org/guide/get-started/)，根据官方教程配置好Waline后端好，在```config.yml```里面如下：
 ```
 waline:
-    serverUrl: "WALINE_SERVER_URL"
+    serverUrl: &#34;WALINE_SERVER_URL&#34;
 ```
 把```WALINE_SERVER_URL```替换成你的Waline服务地址就可以。
 ## 站点统计
@@ -33,11 +33,11 @@ waline:
 
 1.创建文件夹
 ```
-mkdir website && cd website
+mkdir website &amp;&amp; cd website
 ```
 2. 创建如下文件运行```docker-compose up -d``` 
 ```yaml
-version: "3"
+version: &#34;3&#34;
 services:
   db:
     image: mysql
@@ -51,10 +51,10 @@ services:
     volumes:
       - ./conf:/etc/mysql/conf.d
       - ./data:/var/lib/mysql
-    network_mode: "host"
+    network_mode: &#34;host&#34;
   unami:
     image: ghcr.io/umami-software/umami:mysql-latest
-    network_mode: "host"
+    network_mode: &#34;host&#34;
     environment:
       DATABASE_URL: mysql://user:PASSWORD@localhost:3306/umami
       DATABASE_TYPE: mysql
@@ -65,19 +65,19 @@ services:
     container_name: waline
     image: lizheming/waline:latest
     restart: always
-    network_mode: "host"
+    network_mode: &#34;host&#34;
     volumes:
       - ${PWD}/data:/app/data
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: &#39;Asia/Shanghai&#39;
       MYSQL_HOST: localhost
       MYSQL_DB: waline
       MYSQL_USER: user
       MYSQL_PASSWORD: PASSWORD
-      SITE_NAME: "SivanLaai's Blog"
-      SITE_URL: 'http://www.laais.cn'
-      SECURE_DOMAINS: 'www.laais.cn'
-      AUTHOR_EMAIL: 'eamil@163.com'
+      SITE_NAME: &#34;SivanLaai&#39;s Blog&#34;
+      SITE_URL: &#39;http://www.laais.cn&#39;
+      SECURE_DOMAINS: &#39;www.laais.cn&#39;
+      AUTHOR_EMAIL: &#39;eamil@163.com&#39;
       SMTP_PASS: SMTP_PASSWORD
       SMTP_USER: qqid@qq.com
       SMTP_SERVICE: QQ
@@ -90,7 +90,7 @@ services:
 /*!40101 SET NAMES utf8 */;
 SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&#39;NO_AUTO_VALUE_ON_ZERO&#39; */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
@@ -102,14 +102,14 @@ CREATE TABLE `wl_Comment` (
   `user_id` int(11) DEFAULT NULL,
   `comment` text,
   `insertedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `ip` varchar(100) DEFAULT '',
+  `ip` varchar(100) DEFAULT &#39;&#39;,
   `link` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `nick` varchar(255) DEFAULT NULL,
   `pid` int(11) DEFAULT NULL,
   `rid` int(11) DEFAULT NULL,
   `sticky` boolean DEFAULT NULL,
-  `status` varchar(50) NOT NULL DEFAULT '',
+  `status` varchar(50) NOT NULL DEFAULT &#39;&#39;,
   `like` int(11) DEFAULT NULL,
   `ua` text,
   `url` varchar(255) DEFAULT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `wl_Counter` (
   `reaction6` int(11) DEFAULT NULL,
   `reaction7` int(11) DEFAULT NULL,
   `reaction8` int(11) DEFAULT NULL,
-  `url` varchar(255) NOT NULL DEFAULT '',
+  `url` varchar(255) NOT NULL DEFAULT &#39;&#39;,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -148,10 +148,10 @@ CREATE TABLE `wl_Counter` (
 
 CREATE TABLE `wl_Users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `display_name` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `password` varchar(255) NOT NULL DEFAULT '',
-  `type` varchar(50) NOT NULL DEFAULT '',
+  `display_name` varchar(255) NOT NULL DEFAULT &#39;&#39;,
+  `email` varchar(255) NOT NULL DEFAULT &#39;&#39;,
+  `password` varchar(255) NOT NULL DEFAULT &#39;&#39;,
+  `type` varchar(50) NOT NULL DEFAULT &#39;&#39;,
   `label` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
@@ -181,6 +181,6 @@ CREATE TABLE `wl_Users` (
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/auto_deploy_with_obsidian/  
 

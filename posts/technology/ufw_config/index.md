@@ -55,9 +55,9 @@ sudo ufw app list | grep Nginx
 删除NginxFull
 ```bash
 #允许
-sudo ufw allow "Nginx Full"
+sudo ufw allow &#34;Nginx Full&#34;
 #阻止
-sudo ufw deny "Nginx Full"
+sudo ufw deny &#34;Nginx Full&#34;
 ```
 
 #### （6）删除规则
@@ -82,6 +82,6 @@ sudo ufw delete allow from 203.0.113.101 to any port 8080
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/ufw_config/  
 

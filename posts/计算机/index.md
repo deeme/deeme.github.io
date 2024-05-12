@@ -3,43 +3,43 @@
 
 ## 添加功能：
 ### 1.文件管理：插件NerdTree
-- 打开文件管理：Crtl + N
-- 退出文件管理：Crtl + C
+- 打开文件管理：Crtl &#43; N
+- 退出文件管理：Crtl &#43; C
 
 ### 2.跳转功能：Ctags\pygments\gtags
-- 跳转到定义：Crtl + ]
-- 后退：Crtl + T
-- Ctrl+\ c    Find functions calling this function
-- Ctrl+\ d    Find functions called by this function
-- Ctrl+\ e    Find this egrep pattern
-- Ctrl+\ f    Find this file
-- Ctrl+\ g    Find this definition
-- Ctrl+\ i    Find files #including this file
-- Ctrl+\ s    Find this C symbol
-- Ctrl+\ t    Find this text string
+- 跳转到定义：Crtl &#43; ]
+- 后退：Crtl &#43; T
+- Ctrl&#43;\ c    Find functions calling this function
+- Ctrl&#43;\ d    Find functions called by this function
+- Ctrl&#43;\ e    Find this egrep pattern
+- Ctrl&#43;\ f    Find this file
+- Ctrl&#43;\ g    Find this definition
+- Ctrl&#43;\ i    Find files #including this file
+- Ctrl&#43;\ s    Find this C symbol
+- Ctrl&#43;\ t    Find this text string
 
 ### 3.任意跳转功能，主要是和前一个功能进行补充；JumpAny
-- 跳转到定义：cursor移动到关键词 , + j
+- 跳转到定义：cursor移动到关键词 , &#43; j
 
 ### 4.搜索功能：LeaderF
-- 打开搜索：, + f
-- 结果上翻：Crtl + k
-- 结果下翻：Crtl + j
+- 打开搜索：, &#43; f
+- 结果上翻：Crtl &#43; k
+- 结果下翻：Crtl &#43; j
 - 打开：Enter
 - 帮助：Tab
 
 ### 5.代码补全：Coc.nvim
 - 打开搜索：在对应的关键词后面按tab会提示
-- 结果下翻：提示后按Tab可以顺序下翻，或者用Crtl + n
-- 结果上翻：提示后Crtl + p
+- 结果下翻：提示后按Tab可以顺序下翻，或者用Crtl &#43; n
+- 结果上翻：提示后Crtl &#43; p
 - 选择：Enter
 
 ### 6.代码错误修正：Coc.nvim
 ### 7.**单终端编译和写代码，不用Crtl-z切后台编译**，直接借助tmux和vimux插件实现在一个界面写代码和编译
 - 创建tmux：```tmux session -t mytmux```
-- 分屏tmux：打开vim后输入```, + v + p```，输入相关的运行命令便可打开命令行
-- 运行上一次的命令：需要先运行在```, + v + p```，然后在```, + v + l```便可以运行最后一次的命令
-- 切换tmux：按Crtl + b 再按 hjkl 任意，例如向下切换则Crtl + b，然后按j，便可向下切换tmux
+- 分屏tmux：打开vim后输入```, &#43; v &#43; p```，输入相关的运行命令便可打开命令行
+- 运行上一次的命令：需要先运行在```, &#43; v &#43; p```，然后在```, &#43; v &#43; l```便可以运行最后一次的命令
+- 切换tmux：按Crtl &#43; b 再按 hjkl 任意，例如向下切换则Crtl &#43; b，然后按j，便可向下切换tmux
 
 ### 8.更加强大的终端zsh和on-my-zsh管理，支持主题和插件
 ### 9.vim支持Latex保存自动编译，编译实时显示（Windows Vim Latex Live Preview）
@@ -131,7 +131,7 @@ pacman -Rs mingw-w64-clang-x86_64-toolchain
 ```
 #### 9.配置vim-format依赖
 ```zsh
-#C++ 通过Clang64已经成功支持
+#C&#43;&#43; 通过Clang64已经成功支持
 #Python
 pip install --upgrade autopep8
 #html\css\js
@@ -167,6 +167,6 @@ cp -rf gvim/colors vimfile
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA/  
 

@@ -1,6 +1,6 @@
-# pytorch使用问题
+# Pytorch使用问题
 
-## 1.ModuleNotFoundError: No module named '_lzma'
+## 1.ModuleNotFoundError: No module named &#39;_lzma&#39;
 ### Ubuntu
 #### （1）安装依赖
 ```bash
@@ -29,6 +29,6 @@ except ImportError:
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/pytorch/  
 

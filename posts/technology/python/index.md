@@ -1,4 +1,4 @@
-# python总结
+# Python总结
 
 ## Python 相关问题
 ### Python ImportError: No module named _bz2
@@ -6,7 +6,7 @@
 sudo apt-get install libbz2-dev
 #重新编译Python
 ```
-### ImportError: Missing optional dependency 'openpyxl'
+### ImportError: Missing optional dependency &#39;openpyxl&#39;
 ```bash
 pip install openpyxl
 #重新编译Python
@@ -32,6 +32,6 @@ python get-pip.py
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/python/  
 

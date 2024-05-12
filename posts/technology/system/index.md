@@ -40,7 +40,7 @@ sudo apt-get install build-essential
 ## 根据关键字把进程杀掉
 
 ```bash
-kill -9 $(ps -ef|grep keyword|gawk '$0 !~/grep/ {print $2}' |tr -s '\n' ' ')
+kill -9 $(ps -ef|grep keyword|gawk &#39;$0 !~/grep/ {print $2}&#39; |tr -s &#39;\n&#39; &#39; &#39;)
 ```
 
 ## linux永久挂载硬盘
@@ -77,8 +77,8 @@ User=username   #用户
 Group=usergroup  #用户组
 UMask=0000  #权限777
 Type=simple
-#ExecStartPre=-cd /home/<span class="hljs-built_in">test</span>/ #启动前执行
-#WorkingDirectory=/home/<span class="hljs-built_in">test</span>/ #工作目录
+#ExecStartPre=-cd /home/&lt;span class=&#34;hljs-built_in&#34;&gt;test&lt;/span&gt;/ #启动前执行
+#WorkingDirectory=/home/&lt;span class=&#34;hljs-built_in&#34;&gt;test&lt;/span&gt;/ #工作目录
 ExecStart=/usr/bin/qbittorrent-nox #启动时执行
 ExecReload=/bin/kill -SIGHUP $MAINPID #重启时执行
 ExecStop=/bin/kill -SIGINT $MAINPID #停止时执行
@@ -116,7 +116,7 @@ systemctl kill qbittorrent
 - 配置文件~/.config/systemd/user/v2ray.service```
 ```
 [Unit]
-Description=keep v2ray's servie alive
+Description=keep v2ray&#39;s servie alive
 
 [Service]
 Type=simple
@@ -175,9 +175,9 @@ fc-list :lang=zh
 计算机\HKEY_CLASSES_ROOT\Directory\shell\使用Neovim打开
 ```
 - 添加Icon
-在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```"D:\Program Files\Neovim\bin\gnvim.exe"```
+在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34;```
 - 添加打开命令
-在```使用Neovim打开```添加子项```command```，设置值为```"D:\Program Files\Neovim\bin\gnvim.exe" -qwindowgeometry 1310x650+20+20 "%1"```
+在```使用Neovim打开```添加子项```command```，设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34; -qwindowgeometry 1310x650&#43;20&#43;20 &#34;%1&#34;```
 ##### 右键文件
 - 添加如下值
 
@@ -185,9 +185,9 @@ fc-list :lang=zh
 计算机\HKEY_CLASSES_ROOT\*\shell\使用Neovim打开
 ```
 - 添加Icon
-在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```"D:\Program Files\Neovim\bin\gnvim.exe"```
+在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34;```
 - 添加打开命令
-在```使用Neovim打开```添加子项```command```，设置值为```"D:\Program Files\Neovim\bin\gnvim.exe" -qwindowgeometry 1310x650+20+20 "%1"```
+在```使用Neovim打开```添加子项```command```，设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34; -qwindowgeometry 1310x650&#43;20&#43;20 &#34;%1&#34;```
 
 ##### 右键文件
 - 添加如下值
@@ -196,9 +196,9 @@ fc-list :lang=zh
 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell\使用Neovim打开
 ```
 - 添加Icon
-在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```"D:\Program Files\Neovim\bin\gnvim.exe"```
+在```使用Neovim打开```空白处添加字符串项```Icon```设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34;```
 - 添加打开命令
-在```使用Neovim打开```添加子项```command```，设置值为```"D:\Program Files\Neovim\bin\gnvim.exe"```
+在```使用Neovim打开```添加子项```command```，设置值为```&#34;D:\Program Files\Neovim\bin\gnvim.exe&#34;```
 ##### 参考文档
 - [使用注册表编辑win10鼠标右键菜单，详细解释（右键文件夹、文件以及右键空白区域下三种情况）_鸾镜朱颜暗换的博客-CSDN博客_桌面右键菜单注册表](https://blog.csdn.net/qq_34769162/article/details/117068877)
 - [contextmenu - How add context menu item to Windows Explorer for folders - Stack Overflow](https://stackoverflow.com/questions/20449316/how-add-context-menu-item-to-windows-explorer-for-folders)
@@ -206,6 +206,6 @@ fc-list :lang=zh
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/system/  
 

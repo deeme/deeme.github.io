@@ -7,7 +7,7 @@ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add 
 ```
 #### （2）创建mongodb列表文件
 ```bash
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+echo &#34;deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse&#34; | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
 ```
 #### （3）重新加载包数据
 ```bash
@@ -81,9 +81,9 @@ mongo mongodb://127.0.0.1:10095
 use Production
 db.createUser(
    {
-     user: "production",
-     pwd: "production@123",  // passwordPrompt() Or  "<cleartext password>"
-     roles: [ "readWrite", "dbAdmin" ]
+     user: &#34;production&#34;,
+     pwd: &#34;production@123&#34;,  // passwordPrompt() Or  &#34;&lt;cleartext password&gt;&#34;
+     roles: [ &#34;readWrite&#34;, &#34;dbAdmin&#34; ]
    }
 )
 ```
@@ -92,15 +92,15 @@ db.createUser(
 use admin
 db.createUser(
    {
-     user: "mongoAdmin",
-     pwd: passwordPrompt(),  // passwordPrompt() Or  "<cleartext password>"
-     roles: [ "readWriteAnyDatabase", "userAdminAnyDatabase", "dbAdminAnyDatabase"]
+     user: &#34;mongoAdmin&#34;,
+     pwd: passwordPrompt(),  // passwordPrompt() Or  &#34;&lt;cleartext password&gt;&#34;
+     roles: [ &#34;readWriteAnyDatabase&#34;, &#34;userAdminAnyDatabase&#34;, &#34;dbAdminAnyDatabase&#34;]
    }
 )
 ```
 #### （4）登录
 ```bash
-db.auth("production")
+db.auth(&#34;production&#34;)
 ```
 # Mongodb更新用户权限
 #### （1）连接Mongodb
@@ -111,12 +111,12 @@ mongo mongodb://127.0.0.1:10095
 ```bash
 use Production
 # 更新用户权限
-db.updateUser("production",{roles : [{"role" : "readWriteAnyDatabase","db" : "Stock"},{"role" : "dbAdminAnyDatabase","db" : "Stock"}]})
+db.updateUser(&#34;production&#34;,{roles : [{&#34;role&#34; : &#34;readWriteAnyDatabase&#34;,&#34;db&#34; : &#34;Stock&#34;},{&#34;role&#34; : &#34;dbAdminAnyDatabase&#34;,&#34;db&#34; : &#34;Stock&#34;}]})
 readWriteAnyDatabase
 ```
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/mongodb/  
 

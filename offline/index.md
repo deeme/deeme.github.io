@@ -4,6 +4,6 @@
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/offline/  
 

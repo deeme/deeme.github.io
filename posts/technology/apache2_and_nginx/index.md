@@ -1,4 +1,4 @@
-# web容器的使用和反向代理
+# Web容器的使用和反向代理
 
 # apache常见问题
 ### 配置apache2文件简单服务器
@@ -8,12 +8,12 @@ sudo vim /etc/apache2/sites-available/000-default.conf
 ```
 修改内容为
 ```bash
-  Alias /e6ecni3_Sivan "/var/www/html/"
-  <Directory /var/www/html/">
+  Alias /e6ecni3_Sivan &#34;/var/www/html/&#34;
+  &lt;Directory /var/www/html/&#34;&gt;
     Require all granted
     AllowOverride All
     Options FollowSymLinks MultiViews
-  </Directory>
+  &lt;/Directory&gt;
 ```
 删除```/var/www/html```
 ```bash
@@ -44,11 +44,11 @@ sudo a2enmod proxy
 #sites-available/example.conf
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
-<VirtualHost *:80>
+&lt;VirtualHost *:80&gt;
 	# The ServerName directive sets the request scheme, hostname and port that
 	# the server uses to identify itself. This is used when creating
 	# redirection URLs. In the context of virtual hosts, the ServerName
-	# specifies what hostname must appear in the request's Host: header to
+	# specifies what hostname must appear in the request&#39;s Host: header to
 	# match this virtual host. For the default virtual host (this file) this
 	# value is not decisive as it is used as a last resort host regardless.
 	# However, you must set it for any further virtual host explicitly.
@@ -57,7 +57,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 	ServerAdmin sivan@localhost
 	# Para qbittorrent
 	RewriteEngine on
-	RewriteRule             ^/torrent$      "/torrent/$1" [R]
+	RewriteRule             ^/torrent$      &#34;/torrent/$1&#34; [R]
 	ProxyPass               /torrent/       http://127.0.0.1:8080/
 	ProxyPassReverse        /torrent/       http://127.0.0.1:8080/
 	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
@@ -73,9 +73,9 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 	# enabled or disabled at a global level, it is possible to
 	# include a line for only one particular virtual host. For example the
 	# following line enables the CGI configuration for this host only
-	# after it has been globally disabled with "a2disconf".
+	# after it has been globally disabled with &#34;a2disconf&#34;.
 	#Include conf-available/serve-cgi-bin.conf
-</VirtualHost>
+&lt;/VirtualHost&gt;
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
@@ -95,8 +95,8 @@ sudo a2enmod ssl
 - 配置证书```site.conf```
 ```bash
 LoadModule proxy_module modules/mod_proxy.so                                  
-<IfModule mod_ssl.c>            
-        <VirtualHost _default_:443>
+&lt;IfModule mod_ssl.c&gt;            
+        &lt;VirtualHost _default_:443&gt;
                 ServerAdmin webmaster@localhost                                                                
                                                                                         
                 RewriteEngine on
@@ -113,8 +113,8 @@ LoadModule proxy_module modules/mod_proxy.so
                 SSLCertificateChainFile /etc/apache2/ssl/cloud.laais.cn.crt
 				SSLCACertificatePath /etc/apache2/ssl
                 SSLCACertificateFile /etc/apache2/ssl.crt/root_bundle.crt                                        
-        </VirtualHost>                                                          
-</IfModule>  
+        &lt;/VirtualHost&gt;                                                          
+&lt;/IfModule&gt;  
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
@@ -125,35 +125,35 @@ LoadModule proxy_module modules/mod_proxy.so
 ```bash
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
-<VirtualHost *:80>
+&lt;VirtualHost *:80&gt;
         ServerName www.hfsurrogacy.com
 
         ServerAdmin webmaster@hfsurrogacy.com
         DocumentRoot /var/www/html
-        <Directory /var/www/html>
+        &lt;Directory /var/www/html&gt;
             AllowOverride All
             Require all granted
-        </Directory>
+        &lt;/Directory&gt;
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-        <LocationMatch "/web">
+        &lt;LocationMatch &#34;/web&#34;&gt;
             ProxyPass http://127.0.0.1:10086/web upgrade=WebSocket
             ProxyAddHeaders Off
             ProxyPreserveHost On
             RequestHeader set Host %{HTTP_HOST}s
             RequestHeader set X-Forwarded-For %{REMOTE_ADDR}s
-        </LocationMatch>
+        &lt;/LocationMatch&gt;
 
-</VirtualHost>
+&lt;/VirtualHost&gt;
 ```
 
 
 ## 阿里云ssl证书安装错误
 - 根据阿里云的教程[在Apache服务器上安装SSL证书 (aliyun.com)](https://help.aliyun.com/document_detail/98727.html?spm=0.2020520163.help.dexternal.172bmN0amN0aZT)
 1.在服务器上更新证书apache2会报错
-（1）错误1：```AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globa```
+（1）错误1：```AH00558: apache2: Could not reliably determine the server&#39;s fully qualified domain name, using 127.0.1.1. Set the &#39;ServerName&#39; directive globa```
 在```apache.conf```最后添加如下：
 ```
 ...
@@ -161,7 +161,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 ServerName 127.0.0.1 
 ```
 
-（2）错误2：```Action 'start' failed.```
+（2）错误2：```Action &#39;start&#39; failed.```
 看日志提示```SSL Library Error: error:0A0000B1:SSL routines::no certificate assigned```
 - 解决方案
 下载这两处的文件然后把其他文件里面的pem文件更新到```site.conf```中
@@ -231,7 +231,7 @@ server {
         # See: https://bugs.debian.org/765782
         #
         # Self signed certs generated by the ssl-cert package
-        # Don't use them in a production server!
+        # Don&#39;t use them in a production server!
         #
         # include snippets/snakeoil.conf;
 
@@ -262,13 +262,13 @@ server {
                 proxy_redirect off;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection "upgrade";
+                proxy_set_header Connection &#34;upgrade&#34;;
                 proxy_set_header Host $http_host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
                 set $is_v2ray 0;
-                if ($http_upgrade = "websocket") {
+                if ($http_upgrade = &#34;websocket&#34;) {
                     set $is_v2ray 1;
                 }
 
@@ -297,6 +297,6 @@ server {
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/apache2_and_nginx/  
 

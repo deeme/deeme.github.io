@@ -4,6 +4,6 @@
 
 ---
 
-> Author: [DeemBear](https://deembear.top)  
+> Author:   
 > URL: https://deembear.top/en/offline/  
 

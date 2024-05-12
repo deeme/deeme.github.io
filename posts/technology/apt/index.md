@@ -1,4 +1,4 @@
-# apt重新安装配置
+# Apt重新安装配置
 
 ## 7.apt重新配置
 #### （1）修复Python
@@ -51,6 +51,6 @@ sudo apt update
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/apt/  
 

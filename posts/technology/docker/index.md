@@ -1,4 +1,4 @@
-# docker教程
+# Docker教程
 
 # docker教程
 
@@ -26,8 +26,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 * 3.设置apt docker稳定仓库设置
 ```bash
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  &#34;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable&#34; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 ```
 #### 安装Docker引擎
 * 1.更新apt包索引并且安装Docker引擎
@@ -42,8 +42,8 @@ sudo docker run hello-world
 * 3.设置apt docker稳定仓库设置
 ```bash
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  &#34;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable&#34; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 ```
 #### 参考文档
 [Install Docker Engine on Ubuntu | Docker Documentation](https://docs.docker.com/engine/install/ubuntu/)
@@ -53,11 +53,11 @@ echo \
 #### 安装Docker Compose
 * 1.下载docker compose可执行文件
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L &#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose
 ```
 * 2.设置可执行权限
 ```
-sudo chmod +x /usr/local/bin/docker-compose
+sudo chmod &#43;x /usr/local/bin/docker-compose
 ```
 
 ## qBittorrent Docker运行
@@ -71,7 +71,7 @@ cd qBittorrent
 ```
 * 2.进入项目文件目录，新建配置文件```docker-compose.yml```，配置下载端口，qBittorrent相关目录
 ```bash
-version: "3"
+version: &#34;3&#34;
 
 services:
   qbittorrent:
@@ -99,6 +99,6 @@ docker-compose start
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/docker/  
 

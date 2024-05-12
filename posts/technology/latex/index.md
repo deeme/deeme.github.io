@@ -43,16 +43,16 @@ sudo apt install fontconfig
 
 创建/etc/fonts/local.conf
 ```xml
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
-    <dir>/mnt/c/Windows/Fonts</dir>
-</fontconfig>
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;
+&lt;fontconfig&gt;
+    &lt;dir&gt;/mnt/c/Windows/Fonts&lt;/dir&gt;
+&lt;/fontconfig&gt;
 ```
 
 
 ---
 
-> 作者: [DeemBear](https://deembear.top)  
+> 作者:   
 > URL: https://deembear.top/posts/technology/latex/  
 

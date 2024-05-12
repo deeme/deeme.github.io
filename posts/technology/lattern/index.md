@@ -1,4 +1,4 @@
-# 搭建备用梯子：V2Ray + WebSocket + TLS + CloudFlare
+# 搭建备用梯子：V2Ray &#43; WebSocket &#43; TLS &#43; CloudFlare
 
 
 中转：速度不重要，隐蔽性、抗干扰性第一。
@@ -8,7 +8,7 @@
 安装方法有很多，这里就直接用官方提供的脚本：
 
 ```bash
-bash <(curl -L -s https://install.direct/go.sh)
+bash &lt;(curl -L -s https://install.direct/go.sh)
 ```
 
 脚本会自动安装这些东西：
@@ -29,45 +29,45 @@ bash <(curl -L -s https://install.direct/go.sh)
 
 ```javascript
 {
-  "inbounds": [{
-    "port": 10086,
+  &#34;inbounds&#34;: [{
+    &#34;port&#34;: 10086,
     // 因为还要用 Nginx 反代，这里直接监听本地就行
-    "listen": "127.0.0.1",
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
+    &#34;listen&#34;: &#34;127.0.0.1&#34;,
+    &#34;protocol&#34;: &#34;vmess&#34;,
+    &#34;settings&#34;: {
+      &#34;clients&#34;: [
         {
           // 用户 UUID，自己随机弄一个
-          "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
-          "level": 1,
-          "alterId": 64
+          &#34;id&#34;: &#34;23ad6b10-8d1a-40f7-8ad0-e3e35cd38297&#34;,
+          &#34;level&#34;: 1,
+          &#34;alterId&#34;: 64
         }
       ]
     },
-    "streamSettings": {
+    &#34;streamSettings&#34;: {
       // 指定底层传输方式为 WebSocket
-      "network": "ws",
-      "wsSettings": {
+      &#34;network&#34;: &#34;ws&#34;,
+      &#34;wsSettings&#34;: {
         // 在哪个路径上提供 WS 服务，可自定义
-        "path": "/whatever"
+        &#34;path&#34;: &#34;/whatever&#34;
       }
     }
   }],
-  "outbounds": [{
-    "protocol": "freedom",
-    "settings": {}
+  &#34;outbounds&#34;: [{
+    &#34;protocol&#34;: &#34;freedom&#34;,
+    &#34;settings&#34;: {}
   },{
-    "protocol": "blackhole",
-    "settings": {},
-    "tag": "blocked"
+    &#34;protocol&#34;: &#34;blackhole&#34;,
+    &#34;settings&#34;: {},
+    &#34;tag&#34;: &#34;blocked&#34;
   }],
-  "routing": {
-    "rules": [
+  &#34;routing&#34;: {
+    &#34;rules&#34;: [
       {
         // 默认规则，禁止访问服务器内网
-        "type": "field",
-        "ip": ["geoip:private"],
-        "outboundTag": "blocked"
+        &#34;type&#34;: &#34;field&#34;,
+        &#34;ip&#34;: [&#34;geoip:private&#34;],
+        &#34;outboundTag&#34;: &#34;blocked&#34;
       }
     ]
   }
@@ -117,7 +117,7 @@ Bad Request
 
 毕竟要隐蔽嘛，最好是选一个已经上线的正常网站，悄咪咪地把其中一个路径反代到我们的 V2Ray 上。
 
-网上不少 V2Ray + WebSocket + TLS 的教程里，Web 服务器 + SSL 证书的配置都是重头戏。可如果你平时就有在捣鼓网站的话，这些实在是都不算啥……所以我这里也就一笔带过了。
+网上不少 V2Ray &#43; WebSocket &#43; TLS 的教程里，Web 服务器 &#43; SSL 证书的配置都是重头戏。可如果你平时就有在捣鼓网站的话，这些实在是都不算啥……所以我这里也就一笔带过了。
 
 以 Nginx 为例，找个合适的 `server {}` 块添加以下内容（这重定向语法够蛋疼的）：
 
@@ -126,13 +126,13 @@ location /whatever {
     proxy_redirect off;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
+    proxy_set_header Connection &#34;upgrade&#34;;
     proxy_set_header Host $http_host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
     set $is_v2ray 0;
-    if ($http_upgrade = "websocket") {
+    if ($http_upgrade = &#34;websocket&#34;) {
         set $is_v2ray 1;
     }
 
@@ -165,7 +165,7 @@ server {
     ssl_session_timeout 10m;
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
-    ssl_ciphers EECDH+AESGCM:EDH+AESGCM;
+    ssl_ciphers EECDH&#43;AESGCM:EDH&#43;AESGCM;
 
     location ~ [^/]\.php(/|$) {
         fastcgi_pass unix:/dev/shm/php-cgi.sock;
@@ -201,21 +201,21 @@ content-length: 12
 sec-websocket-version: 13
 x-content-type-options: nosniff
 cf-cache-status: DYNAMIC
-expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct" server: cloudflare
+expect-ct: max-age=604800, report-uri=&#34;https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct&#34; server: cloudflare
 
 Bad Request
 ```
 
 同样也是出现 400 Bad Request 就对了。
 
-如果你像我上面一样在 Nginx 中配置了 `$http_upgrade = "websocket"` 的判断的话，这里返回的会是用于伪装的那个页面（而且 Nginx 的 `$http_upgrade` 变量不知道是按什么赋值的，直接 `curl --header "Upgrade: websocket"` 的话还不认，怪得很）。可以使用 `wscat` 来测试：
+如果你像我上面一样在 Nginx 中配置了 `$http_upgrade = &#34;websocket&#34;` 的判断的话，这里返回的会是用于伪装的那个页面（而且 Nginx 的 `$http_upgrade` 变量不知道是按什么赋值的，直接 `curl --header &#34;Upgrade: websocket&#34;` 的话还不认，怪得很）。可以使用 `wscat` 来测试：
 
 ```bash
 wscat -c wss://example.com/whatever
 ```
 
 ```text
-Connected (press CTRL+C to quit)
+Connected (press CTRL&#43;C to quit)
 ```
 
 ## 6. 配置 V2Ray 客户端
@@ -224,52 +224,52 @@ Connected (press CTRL+C to quit)
 
 ```javascript
 {
-  "log": {
-    "loglevel": "warning"
+  &#34;log&#34;: {
+    &#34;loglevel&#34;: &#34;warning&#34;
   },
-  "inbounds": [{
+  &#34;inbounds&#34;: [{
     // 本地代理配置
-    "port": 1080,
-    "listen": "127.0.0.1",
-    "protocol": "socks",
-    "settings": {
-      "auth": "noauth",
-      "udp": false,
-      "ip": "127.0.0.1"
+    &#34;port&#34;: 1080,
+    &#34;listen&#34;: &#34;127.0.0.1&#34;,
+    &#34;protocol&#34;: &#34;socks&#34;,
+    &#34;settings&#34;: {
+      &#34;auth&#34;: &#34;noauth&#34;,
+      &#34;udp&#34;: false,
+      &#34;ip&#34;: &#34;127.0.0.1&#34;
     }
   }],
-  "outbounds": [{
-    "protocol": "vmess",
-    "settings": {
-      "vnext": [
+  &#34;outbounds&#34;: [{
+    &#34;protocol&#34;: &#34;vmess&#34;,
+    &#34;settings&#34;: {
+      &#34;vnext&#34;: [
         {
           // 套过 CloudFlare 的网址
-          "address": "example.com",
-          "port": 443,
-          "users": [
+          &#34;address&#34;: &#34;example.com&#34;,
+          &#34;port&#34;: 443,
+          &#34;users&#34;: [
             {
               // id 和 alterId 必须和服务端上配置的一样
-              "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
-              "alterId": 64
+              &#34;id&#34;: &#34;23ad6b10-8d1a-40f7-8ad0-e3e35cd38297&#34;,
+              &#34;alterId&#34;: 64
             }
           ]
         }
       ]
     },
-    "streamSettings": {
+    &#34;streamSettings&#34;: {
       // 传输协议为 WebSocket
-      "network": "ws",
+      &#34;network&#34;: &#34;ws&#34;,
       // 底层传输安全为 TLS
-      "security": "tls",
-      "wsSettings": {
+      &#34;security&#34;: &#34;tls&#34;,
+      &#34;wsSettings&#34;: {
         // 路径要和上面设置的一样
-        "path": "/whatever"
+        &#34;path&#34;: &#34;/whatever&#34;
       }
     }
   }],
-  "policy": {
-    "levels": {
-      "0": {"uplinkOnly": 0}
+  &#34;policy&#34;: {
+    &#34;levels&#34;: {
+      &#34;0&#34;: {&#34;uplinkOnly&#34;: 0}
     }
   }
 }
@@ -286,21 +286,21 @@ Connected (press CTRL+C to quit)
 ## 常见问题
 ### TUN模式，开启热点连接暴增
 
-> 1.  开启热点分享功能，此时系统网络设置中会生成一个网卡
-> 2.  开启 TUN 模式
-> 3.  进入系统网络设置，在 Clash 网卡右键选择属性，选择共享标签页
-> 4.  勾选“允许其他网络用户通过此计算机的 Internet 连接来连接”
-> 5.  在“家庭网络连接”选择框中选择第 1 步生成的网卡
+&gt; 1.  开启热点分享功能，此时系统网络设置中会生成一个网卡
+&gt; 2.  开启 TUN 模式
+&gt; 3.  进入系统网络设置，在 Clash 网卡右键选择属性，选择共享标签页
+&gt; 4.  勾选“允许其他网络用户通过此计算机的 Internet 连接来连接”
+&gt; 5.  在“家庭网络连接”选择框中选择第 1 步生成的网卡
 
-[![networdk-adaptor.jpg](https://file.leey.tech/d/OneDrive-P1/2022/04/21/DEycqBZ9/1650554539.jpg "networdk-adaptor.jpg")](https://file.leey.tech/d/OneDrive-P1/2022/04/21/DEycqBZ9/1650554539.jpg "networdk-adaptor.jpg")
+[![networdk-adaptor.jpg](https://file.leey.tech/d/OneDrive-P1/2022/04/21/DEycqBZ9/1650554539.jpg &#34;networdk-adaptor.jpg&#34;)](https://file.leey.tech/d/OneDrive-P1/2022/04/21/DEycqBZ9/1650554539.jpg &#34;networdk-adaptor.jpg&#34;)
 
 
 **参考链接：**
 
-- [WebSocket+TLS+Web · V2Ray 配置指南|V2Ray 白话文教程](https://toutyrater.github.io/advanced/wss_and_web.html)
+- [WebSocket&#43;TLS&#43;Web · V2Ray 配置指南|V2Ray 白话文教程](https://toutyrater.github.io/advanced/wss_and_web.html)
 - [配置文件 · Project V 官方网站](https://www.v2ray.com/chapter_02/)
 - [使用Cloudflare中转V2Ray流量 · 233boy/v2ray Wiki](https://github.com/233boy/v2ray/wiki/%E4%BD%BF%E7%94%A8Cloudflare%E4%B8%AD%E8%BD%ACV2Ray%E6%B5%81%E9%87%8F)
-- [CFW TUN 模式 移动热点冲突 - Leey's](https://blog.leey.tech/2022/04/20/cfw-tun-hotspot.html)
+- [CFW TUN 模式 移动热点冲突 - Leey&#39;s](https://blog.leey.tech/2022/04/20/cfw-tun-hotspot.html)
 
 
 ---
