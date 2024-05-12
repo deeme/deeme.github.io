@@ -1,2 +1,6 @@
 static/bak/
-themes/FixIt/.git
+themes/FixIt/.git/
+themes/FixIt/.github/
+themes/FixIt/.gitattributes
+themes/FixIt/.gitignore
+themes/FixIt/.npmrc
