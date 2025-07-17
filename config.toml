@@ -1101,14 +1101,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       [[languages.zh-cn.menu.main]]
         identifier = "服务监控"
         name = "监控"
-        url = "https://jkon.deem.love"
+        url = "https://jkon.168369.xyz"
         weight = 7
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
       [[languages.zh-cn.menu.main]]
         identifier = "导航"
         name = "导航"
-        url = "https://deem.love"
+        url = "https://nav.168369.xyz"
         weight = 8
         [languages.zh-cn.menu.main.params]
           icon = "fa-solid fa-info-circle"
